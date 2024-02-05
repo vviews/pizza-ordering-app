@@ -15,27 +15,30 @@ export default function ProfilePage(){
     const [city , setCity] = useState("")
     const [country , setCountry] = useState("")
     const [admin , Isadmin] = useState(false)
+    const [profileFetch, IsProfileFetch ]=useState(false)
     const {status} = session;
     const userImage = session?.data?.user?.image;
 
     useEffect(() => {
         if (status === 'authenticated'){
             setUserName(session?.data?.user?.name)
-            fetch('/api/profile').then((response) => {
+            fetch('/api/profile')
+            .then((response) => {
                 return response.json()
-            }).then((data) => {
-                console.log(data)
+            })
+            .then((data) => {
                 setPhone(data.phone)
                 setStreetAddress(data.streetAddress)
                 setPostalCode(data.postalCode)
                 setCity(data.city)
                 setCountry(data.country)
                 Isadmin(data.admin)
+                IsProfileFetch(true)
             })
         }
     },[session,status])
 
-    if (status === 'loading'){
+    if (status === 'loading' || !profileFetch){
         return 'Loading...'
     }
 
@@ -59,6 +62,7 @@ export default function ProfilePage(){
                     country
                 })
             })
+            
             if (response.ok){
                 resolve()
             }else{
@@ -76,7 +80,7 @@ export default function ProfilePage(){
 
     return(
         <section className="mt-8">
-            <UserTabs Isadmin={Isadmin}/>
+            <UserTabs Isadmin={admin}/>
             <div className="max-w-md mx-auto mt-4">
                 <div className="flex gap-2">
                     <div>
