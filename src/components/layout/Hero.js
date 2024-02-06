@@ -26,7 +26,7 @@ export default function Hero() {
                 </div>
             </div>
             <div className="relative">
-                <Image src={'/pizza-hero.png'} layout="fill" objectFit="contain" alt="pizza"/>
+                <Image src={'/pizza-hero.png'} fill style={{objectFit:'contain'}} alt="pizza"/>
 
             </div>
         </section>

@@ -16,7 +16,6 @@ export default function EditableImage({image64, setImage64}) {
     // },[image])
 
     function convertToBase64(file){
-      console.log('converting to base64')
       return new Promise((resolve, reject) => {
         const fileReader = new FileReader()
         fileReader.readAsDataURL(file)
