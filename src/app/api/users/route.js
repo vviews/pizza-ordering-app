@@ -3,7 +3,6 @@ import {User} from "@/models/User";
 import mongoose from "mongoose";
 
 export async function GET() {
-    console.log('get users')
   mongoose.connect(process.env.MONGO_URL);
   if (await isAdmin()) {
     const users = await User.find();

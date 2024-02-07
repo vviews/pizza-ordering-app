@@ -17,7 +17,6 @@ export default function NewMenuItemPage() {
 
   async function handleFormSubmit(ev, data) {
     ev.preventDefault();
-    console.log(data)
 
 
     const savingPromise = new Promise(async (resolve, reject) => {

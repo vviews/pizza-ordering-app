@@ -3,7 +3,6 @@ import {MenuItem} from "@/models/MenuItem";
 import mongoose from "mongoose";
 
 export async function POST(req, res) {
-  console.log('in menu-items')
   mongoose.connect(process.env.MONGO_URL);
   const data = await req.json()
   if (await isAdmin()) {

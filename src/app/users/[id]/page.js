@@ -17,7 +17,6 @@ export default function EditUserPage() {
         return res.json()
     })
     .then(user => {
-        console.log(user)
         setUser(user);
     });
   }, []);

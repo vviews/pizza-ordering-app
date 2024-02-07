@@ -15,7 +15,6 @@ export default function UsersPage() {
       return response.json()
     })
     .then(users => {
-        console.log(users)
         setUsers(users);
     });
   }, []);

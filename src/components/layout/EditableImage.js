@@ -5,7 +5,6 @@ import toast from "react-hot-toast";
 
 
 export default function EditableImage({image64, setImage64}) {
-    console.log(image64)
     const [display, setDisplay] = useState()
     const [image, setImage] = useState()
 
