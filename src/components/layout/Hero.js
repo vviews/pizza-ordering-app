@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Right from "../icons/Right";
+import Link from "next/link";
 
 export default function Hero() {
     return (
@@ -15,10 +16,10 @@ export default function Hero() {
                     Pizza is the missing piece that makes every day complete, a simple yet delicious joy in your life
                 </p>
                 <div className="flex gap-4 text-sm ">
-                    <button className="bg-primary uppercase text-white px-4 py-2 rounded-full flex gap-2 items-center justify-center">
+                    <Link href={'/menu'} className="w-full bg-primary uppercase text-white px-4 py-2 rounded-full flex gap-2 items-center justify-center">
                         Order now
                         <Right/>
-                    </button>
+                    </Link>
                     <button className="flex gap-2 py-2 text-gray-600 font-semibold border-0">
                         Learn more
                         <Right/>

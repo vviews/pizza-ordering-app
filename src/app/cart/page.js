@@ -8,12 +8,14 @@ import {useProfile} from "@/components/UseProfile";
 import Image from "next/image";
 import {useContext, useEffect, useState} from "react";
 import toast from "react-hot-toast";
+import {redirect, useRouter} from "next/navigation";
 
 export default function CartPage() {
-  const {cartProducts,removeCartProduct} = useContext(CartContext);
+  const {cartProducts,removeCartProduct, clearCart} = useContext(CartContext);
   const [address, setAddress] = useState({});
   const [cartProductInfo, setCartProductInfo] = useState([]);
   const {data:profileData} = useProfile();
+  const router = useRouter();
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -75,33 +77,35 @@ export default function CartPage() {
   function handleAddressChange(propName, value) {
     setAddress(prevAddress => ({...prevAddress, [propName]:value}));
   }
+  
   async function proceedToCheckout(ev) {
     ev.preventDefault();
+    console.log(address)
+    console.log(cartProductInfo)
     // address and shopping cart products
-
-    const promise = new Promise((resolve, reject) => {
-      fetch('/api/checkout', {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({
-          address,
-          cartProducts,
-        }),
-      }).then(async (response) => {
-        if (response.ok) {
-          resolve();
-          window.location = await response.json();
-        } else {
-          reject();
-        }
-      });
-    });
-
-    await toast.promise(promise, {
-      loading: 'Preparing your order...',
-      success: 'Redirecting to payment...',
-      error: 'Something went wrong... Please try again later',
+    fetch('api/checkout',{
+      method: 'POST',
+      body: JSON.stringify({
+        ...address,
+        cartProducts: cartProductInfo.map((item) => ({
+          _id: item._id,
+          myFile: item.myFile, 
+          name: item.name,
+          extras: item.extras,
+          basePrice: item.basePrice,
+          size: item.size,
+        }))
+      }),
     })
+    .then((res) => {
+      return res.json()
+    })
+    .then((data) => {
+      console.log(data)
+      router.push(`/orders/${data._id}`);
+      clearCart();
+    })
+
   }
 
   if (cartProducts?.length === 0) {
@@ -151,7 +155,7 @@ export default function CartPage() {
               addressProps={address}
               setAddressProp={handleAddressChange}
             />
-            <button type="submit">Pay ${subtotal+50}</button>
+            <button type="submit">Order ${subtotal+50}</button>
           </form>
         </div>
       </div>
