@@ -95,7 +95,7 @@ export default function CategoriesPage (){
                         setEditedCategory(category)
                         setCategoryName(category.name)
                     }}
-                    key={categories.name}
+                    key={category.name}
                     className="bg-gray-200 rounded-xl p-2 px-4 flex gap-1 cursor-pointer mb-1"
                     >
                         <span>{category.name}</span>
