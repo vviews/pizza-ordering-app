@@ -15,13 +15,10 @@ export default function Home() {
         <SectionHeaders SubHeader={'Our Story'} MainHeader={'About us'}/>
         <div className="text-gray-500 max-w-md mx-auto mt-4 flex flex-col gap-4">
           <p className="">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ornare velit quis ipsum congue fermentum. Vivamus nec imperdiet dolor. Ut et placerat magna. 
+          On our menu, imagination takes center stage. Feast your eyes on our latest pizza, pasta, salad, and dessert innovation
           </p>
           <p className="">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ornare velit quis ipsum congue fermentum. Vivamus nec imperdiet dolor. Ut et placerat magna. 
-          </p>
-          <p className="">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ornare velit quis ipsum congue 
+          Come to View's Pizza for the all-you-can eat experience or order now to bring the deliciousness home.
           </p>
         </div>
       </section>

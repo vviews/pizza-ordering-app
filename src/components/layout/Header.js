@@ -22,8 +22,7 @@ export default function Header() {
                 <Link className="text-primary font-semibold text-2xl" href="/">VIEW's PIZZA</Link>
                 <Link href={'/'}>Home</Link>
                 <Link href={'/menu'}>Menu</Link>
-                <Link href={''}>About</Link>
-                <Link href={''}>Contact</Link>
+                <Link href={'/contact-us'}>Contact</Link>
             </nav>
             <nav className="flex items-center gap-8 text-gray-500 font-semibold">
                 { status === 'authenticated' && (
