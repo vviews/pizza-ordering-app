@@ -27,7 +27,7 @@ export default function EditMenuItemPage() {
         const item = items.find(i => i._id === id);
         setMenuItem(item);
     });
-  }, []);
+  }, [id]);
 
   async function handleFormSubmit(ev, data) {
     ev.preventDefault();

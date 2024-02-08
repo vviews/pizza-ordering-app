@@ -9,7 +9,7 @@ export default function ContactView(){
             <div class="heading text-center">
                 <h2 className="text-4xl font-bold">Contact
                     <span className="text-primary"> Us </span></h2>
-                <p className="text-md font-thin leading-4 pt-2">Let’s talk pizza! Find quick link resources about View's Pizza, share your experience, or send us a question.</p>
+                <p className="text-md font-thin leading-4 pt-2">{`Let’s talk pizza! Find quick link resources about View's Pizza, share your experience, or send us a question.`}</p>
             </div>
             <div class="pt-8">
                 <h3 className="text-xl font-medium text-center">Contact detail</h3>

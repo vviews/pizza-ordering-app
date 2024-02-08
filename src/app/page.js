@@ -18,7 +18,7 @@ export default function Home() {
           On our menu, imagination takes center stage. Feast your eyes on our latest pizza, pasta, salad, and dessert innovation
           </p>
           <p className="">
-          Come to View's Pizza for the all-you-can eat experience or order now to bring the deliciousness home.
+          {`Come to View's Pizza for the all-you-can eat experience or order now to bring the deliciousness home.`}
           </p>
         </div>
       </section>
