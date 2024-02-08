@@ -6,7 +6,6 @@ import {getServerSession} from "next-auth";
 export async function POST(req) {
     mongoose.connect(process.env.MONGO_URL);
     const data = await req.json();
-    console.log(data)
     const session = await getServerSession(authOptions);
     const userEmail = session?.user?.email;
     const order = await Order.create({userEmail: userEmail, ...data});
