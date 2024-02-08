@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import {Order} from "@/models/Order";
-import {authOptions} from "@/app/api/auth/[...nextauth]/route";
+// import {authOptions} from "@/app/api/auth/[...nextauth]/route";
+import {authOptions} from "@/libs/authOptions"
 import {getServerSession} from "next-auth";
 
 export async function POST(req) {
