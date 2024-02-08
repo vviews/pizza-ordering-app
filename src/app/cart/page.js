@@ -9,8 +9,11 @@ import Image from "next/image";
 import {useContext, useEffect, useState} from "react";
 import toast from "react-hot-toast";
 import {redirect, useRouter} from "next/navigation";
+import { useSession } from "next-auth/react"
 
 export default function CartPage() {
+  const session = useSession()
+  const {status} = session;
   const {cartProducts,removeCartProduct, clearCart} = useContext(CartContext);
   const [address, setAddress] = useState({});
   const [cartProductInfo, setCartProductInfo] = useState([]);
@@ -52,9 +55,6 @@ export default function CartPage() {
     });
   }, [cartProducts]);
 
-  useEffect(() => {
-    console.log(cartProductInfo)
-  },[cartProductInfo])
 
   useEffect(() => {
     if (profileData?.city) {
@@ -80,8 +80,9 @@ export default function CartPage() {
   
   async function proceedToCheckout(ev) {
     ev.preventDefault();
-    console.log(address)
-    console.log(cartProductInfo)
+    if (status === 'unauthenticated'){
+      return router.push('/login')
+    }
     // address and shopping cart products
     fetch('api/checkout',{
       method: 'POST',
